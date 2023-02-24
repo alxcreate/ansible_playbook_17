@@ -39,5 +39,11 @@
 
 - name: Install Lighthouse
   hosts: lighthouse
+  pre_tasks:
+    - name: Install Git
+      become: true
+      ansible.builtin.yum:
+        name: Git
+        state: present
   roles:
     - lighthouse_role
